@@ -12,6 +12,24 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  NavBarController navBarController;
+  @override
+  void initState() {
+    navBarController = NavBarController(1);
+    navBarController.addListener(() {
+      setState(() {
+        print(navBarController.selected.toString());
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    navBarController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,8 +37,8 @@ class _MainScreenState extends State<MainScreen> {
       appBar: AppBar(
         title: Text("Main"),
       ),
-      bottomNavigationBar: CustomBottomNavBar(),
-      body: SizedBox.expand(
+      bottomNavigationBar: CustomBottomNavBar(controller: navBarController),
+      body: navBarController.selected == 1 ? SizedBox.expand(
         child: GridView.count(
           mainAxisSpacing: 16,
           crossAxisSpacing: 16,
@@ -40,7 +58,7 @@ class _MainScreenState extends State<MainScreen> {
             },
           ),
         ),
-      ),
+      ) : Container(),
     );
   }
 }
