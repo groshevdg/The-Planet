@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:the_planet/screens/intro_screen.dart';
+import 'package:the_planet/screens/intro/intro_screen.dart';
+import 'package:the_planet/screens/main/main_screen.dart';
 
 void main() {
   runApp(PlanetApp());
@@ -8,7 +9,8 @@ void main() {
 class PlanetApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp(routes:
+      {'main' : (context) => MainScreen()},
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
