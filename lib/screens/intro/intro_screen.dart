@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:the_planet/screens/intro/widgets/intro_view_pager.dart';
@@ -27,8 +28,10 @@ class IntroScreen extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(bottom: 25),
               child: RaisedButton(
-                onPressed: () { openMainScreen(context); },
-                child: Text("Go"),
+                onPressed: () {
+                  openAuthScreen(context);
+                },
+                child: Text("Let's start"),
               ),
             )
           ],
@@ -37,7 +40,7 @@ class IntroScreen extends StatelessWidget {
     );
   }
 
-  void openMainScreen(context) {
-    Navigator.pushNamed(context, 'main');
+  void openAuthScreen(context) {
+    Navigator.pushReplacementNamed(context, 'auth');
   }
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "7373296917",
+    "project_id": "the-planet-94440",
+    "storage_bucket": "the-planet-94440.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:7373296917:android:9e9434989cc9d7ea78c51c",
+        "android_client_info": {
+          "package_name": "ru.groshevdg.the_planet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "7373296917-dp9phdchvplfopr2dn64r4o6bsc71t87.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiLBR_arIv1raQdXfGl1quXgvS8TKvA7s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "7373296917-dp9phdchvplfopr2dn64r4o6bsc71t87.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
