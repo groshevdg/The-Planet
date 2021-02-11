@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:the_planet/config/colors.dart';
 import 'package:the_planet/screens/main/widgets/bottom_nav_bar.dart';
+import 'package:the_planet/screens/main/widgets/comics_fragment.dart';
+import 'package:the_planet/screens/main/widgets/games_fragment.dart';
+import 'package:the_planet/screens/main/widgets/rating_fragment.dart';
+import 'package:the_planet/screens/main/widgets/stories_fragment.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -38,27 +42,23 @@ class _MainScreenState extends State<MainScreen> {
         title: Text("Main"),
       ),
       bottomNavigationBar: CustomBottomNavBar(controller: navBarController),
-      body: navBarController.selected == 1 ? SizedBox.expand(
-        child: GridView.count(
-          mainAxisSpacing: 16,
-          crossAxisSpacing: 16,
-          crossAxisCount: 2,
-          children: List.generate(10, (int index) {
-              return AnimationConfiguration.staggeredGrid(
-                position: index,
-                duration: const Duration(milliseconds: 400),
-                delay: const Duration(milliseconds: 300),
-                columnCount: 2,
-                child: ScaleAnimation(
-                  child: FadeInAnimation(
-                    child: Container(color: Colors.grey),
-                  ),
-                ),
-              );
-            },
-          ),
-        ),
-      ) : Container(),
+      body: getBody(navBarController.selected),
     );
+  }
+
+  Widget getBody(int fragmentIndex) {
+    if (fragmentIndex == 1) {
+      return GamesFragment();
+    }
+    else if (fragmentIndex == 2) {
+      return StoriesFragment();
+    }
+    else if (fragmentIndex == 3) {
+      return ComicFragment();
+    }
+    else if (fragmentIndex == 4) {
+      return RatingFragment();
+    }
+    else return Container();
   }
 }
