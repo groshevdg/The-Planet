@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:the_planet/config/colors.dart';
 import 'package:the_planet/screens/main/widgets/bottom_nav_bar.dart';
 import 'package:the_planet/screens/main/widgets/comics_fragment.dart';

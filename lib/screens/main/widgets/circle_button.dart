@@ -21,7 +21,6 @@ class _CircleButtonState extends State<CircleButton> {
       onTap: () {
         HapticFeedback.heavyImpact();
         widget.controller.updateSelectedItem(widget.itemId);
-        widget.controller.notifyListeners();
       },
       child: Stack(
         children: [

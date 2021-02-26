@@ -61,6 +61,7 @@ class NavBarController extends ChangeNotifier {
 
   void updateSelectedItem(int itemId) {
     _selectedItem = itemId;
+    notifyListeners();
   }
 
   @override

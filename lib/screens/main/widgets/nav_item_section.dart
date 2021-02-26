@@ -32,7 +32,6 @@ class _NavItemsSectionState extends State<NavItemsSection> {
               onTap: () {
                 setState(() {
                   widget.navBarController.updateSelectedItem(widget.id1);
-                  widget.navBarController.notifyListeners();
                 });
               },
               child: Padding(
@@ -48,7 +47,6 @@ class _NavItemsSectionState extends State<NavItemsSection> {
               onTap: () {
                 setState(() {
                   widget.navBarController.updateSelectedItem(widget.id2);
-                  widget.navBarController.notifyListeners();
                 });
               },
               child: Padding(

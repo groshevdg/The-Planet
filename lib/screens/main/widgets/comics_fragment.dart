@@ -28,6 +28,6 @@ class _ComicFragmentState extends State<ComicFragment> {
           );
         }),
       ),
-    );;
+    );
   }
 }

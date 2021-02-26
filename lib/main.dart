@@ -15,6 +15,15 @@ class PlanetApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: [
+         //GlobalWidgetsLocalizations.delegate,
+        // GlobalCupertinoLocalizations.delegate,
+        // GlobalMaterialLocalizations.delegate
+      ],
+      supportedLocales: [
+        const Locale("en", ""),
+        const Locale("ru", "")
+      ],
       routes:
       {'main' : (context) => MainScreen(),
       'auth' : (context) => AuthScreen()},
