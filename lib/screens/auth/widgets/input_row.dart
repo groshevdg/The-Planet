@@ -16,6 +16,14 @@ class InputTextRow extends StatefulWidget {
 }
 
 class _InputTextRowState extends State<InputTextRow> {
+  TextEditingController _textEditingController;
+
+  @override
+  void initState() {
+    _textEditingController = TextEditingController();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,17 +34,27 @@ class _InputTextRowState extends State<InputTextRow> {
           SizedBox(
               height: 40, width: MediaQuery.of(context).size.width * 0.75,
               child: TextField(
+                controller: _textEditingController,
+                onChanged: (value) => widget.authController.finishTextEditing(widget.rowIndex, value),
                 decoration: InputDecoration(
                     hintText: widget.hint
                 ),
               )
           ),
           GestureDetector(
-            onTap: () => widget.authController.questionIconIsPressed(widget.rowIndex),
+            onTap: () {
+              widget.authController.questionIconIsPressed(widget.rowIndex);
+            },
             child: Image.asset('assets/images/ic_question.png', width: 30, color: Colors.black)
           )
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
   }
 }

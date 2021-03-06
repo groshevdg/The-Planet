@@ -5,7 +5,7 @@ class TooltipProvider extends ChangeNotifier {
   String _tooltipMessage = "";
   String get message => _tooltipMessage;
 
-  void updateMesage(int index) {
+  void updateTooltipMessage(int index) {
     _updateTooltipMessage(index);
     notifyListeners();
   }

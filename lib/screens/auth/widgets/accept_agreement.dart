@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:the_planet/generated/l10n.dart';
+import 'package:the_planet/screens/auth/auth_controller.dart';
 
-class AcceptAgreemetWidget extends StatefulWidget {
+class AcceptAgreementWidget extends StatefulWidget {
+  final AuthController authController;
+
+  const AcceptAgreementWidget({Key key, this.authController}) : super(key: key);
+
   @override
-  _AcceptAgreemetWidgetState createState() => _AcceptAgreemetWidgetState();
+  _AcceptAgreementWidgetState createState() => _AcceptAgreementWidgetState();
 }
 
-class _AcceptAgreemetWidgetState extends State<AcceptAgreemetWidget> {
+class _AcceptAgreementWidgetState extends State<AcceptAgreementWidget> {
   var _isChecked = false;
   @override
   Widget build(BuildContext context) {
@@ -17,6 +22,7 @@ class _AcceptAgreemetWidgetState extends State<AcceptAgreemetWidget> {
           Flexible(child: Text(S.of(context).agreement_message)),
           Checkbox(value: _isChecked, onChanged: (value) {
             setState(() {
+              widget.authController.checkBoxIsClicked(value);
               _isChecked = value;
             });
           })
