@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:the_planet/generated/l10n.dart';
 import 'package:the_planet/screens/auth/auth_controller.dart';
 import 'package:the_planet/screens/auth/providers/tooltip_provider.dart';
 import 'package:the_planet/screens/auth/widgets/accept_agreement.dart';
 import 'package:the_planet/screens/auth/widgets/input_row.dart';
 
-
 class AuthScreen extends StatefulWidget {
+  static const route = "auth";
   @override
   _AuthScreenState createState() => _AuthScreenState();
 }
@@ -37,13 +38,12 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
               padding: const EdgeInsets.only(top: 60),
               child: Align(
                 alignment: Alignment.topCenter,
-                child: Text("Let's create you account",
+                child: Text(S.of(context).create_acc_message,
                     style: Theme.of(context).textTheme.headline1
                 ),
               ),
             ),
-            Text("Choose your username, password and keyword."
-                "\nTap on a question icon to learn more.",
+            Text(S.of(context).data_to_create_acc,
               style: Theme.of(context).textTheme.headline2,
               textAlign: TextAlign.center
             ),
@@ -53,10 +53,10 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
                 alignment: Alignment.topLeft,
                 child: Column(
                   children: [
-                    InputTextRow(hint: "username", authController: _authController, rowIndex: 0),
-                    InputTextRow(hint: "password", authController: _authController, rowIndex: 1),
-                    InputTextRow(hint: "confirm password", authController: _authController, rowIndex: 2),
-                    InputTextRow(hint: "secret word", authController: _authController, rowIndex: 3),
+                    InputTextRow(hint: S.of(context).username_hint, authController: _authController, rowIndex: 0),
+                    InputTextRow(hint: S.of(context).password_hint, authController: _authController, rowIndex: 1),
+                    InputTextRow(hint: S.of(context).confirm_pass_hint, authController: _authController, rowIndex: 2),
+                    InputTextRow(hint: S.of(context).secret_word, authController: _authController, rowIndex: 3),
                   ],
                 ),
               ),
@@ -66,14 +66,17 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
             ChangeNotifierProvider(
               create: (context) => _tooltipProvider,
               child: Consumer<TooltipProvider>(builder: (context, providerState, child) {
-                return Text(providerState.message);
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: Text(providerState.message),
+                );
               }),
             ),
             Spacer(),
-            RaisedButton(onPressed: () {}, child: Text("create account")),
+            RaisedButton(onPressed: () {}, child: Text(S.of(context).create_acc_button)),
             Padding(padding: EdgeInsets.only(bottom: 30, top: 10),
               child: TextButton(onPressed: () {},
-                child: Text("I have account"),
+                child: Text(S.of(context).already_created),
               ),
             )
           ],

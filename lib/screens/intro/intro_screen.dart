@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:the_planet/generated/l10n.dart';
+import 'package:the_planet/screens/auth/auth_screen.dart';
 import 'package:the_planet/screens/intro/widgets/intro_view_pager.dart';
 
 class IntroScreen extends StatelessWidget {
+  static const route = "intro";
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,7 @@ class IntroScreen extends StatelessWidget {
               padding: EdgeInsets.only(top: 90),
               child: Align(
                 alignment: Alignment.topCenter,
-                child: Text("The Planet")
+                child: Text(S.of(context).app_name)
               ),
             ),
             Container(
@@ -30,7 +33,7 @@ class IntroScreen extends StatelessWidget {
                 onPressed: () {
                   openAuthScreen(context);
                 },
-                child: Text("Let's start"),
+                child: Text(S.of(context).start_button_title),
               ),
             )
           ],
@@ -40,6 +43,6 @@ class IntroScreen extends StatelessWidget {
   }
 
   void openAuthScreen(context) {
-    Navigator.pushReplacementNamed(context, 'auth');
+    Navigator.pushReplacementNamed(context, AuthScreen.route);
   }
 }

@@ -1,0 +1,20 @@
+{
+   "@@locale": "en",
+   "ok": "OK",
+   "app_name": "The Pony Planet",
+   "start_button_title": "Let's start",
+   "create_acc_message": "Let's create your account",
+   "data_to_create_acc": "Choose your username, password and keyword.\nTap on a question icon to learn more.",
+   "username_hint": "Username",
+   "password_hint": "Password",
+   "confirm_pass_hint": "Confirm Password",
+   "secret_word": "Secret word",
+   "agreement_message": "I read and agree with Privacy Policy",
+   "create_acc_button": "Create account",
+   "already_created": "I have account",
+   "username_tooltip": "Username will be visible for all users",
+   "password_tooltip": "Create strong password, to protect your account",
+   "confirm_pass_tooltip": "Confirm the pass you type before",
+   "secret_word_tooltip": "Create secret word. It will be used to recreate a password, if you forget it",
+   "": ""
+}

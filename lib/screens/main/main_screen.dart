@@ -8,6 +8,7 @@ import 'package:the_planet/screens/main/widgets/rating_fragment.dart';
 import 'package:the_planet/screens/main/widgets/stories_fragment.dart';
 
 class MainScreen extends StatefulWidget {
+  static const route = "main";
   @override
   State<StatefulWidget> createState() {
     return _MainScreenState();

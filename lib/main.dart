@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:the_planet/config/routes.dart';
 import 'package:the_planet/config/theme.dart';
-import 'package:the_planet/screens/auth/auth_screen.dart';
+import 'package:the_planet/generated/l10n.dart';
 import 'package:the_planet/screens/intro/intro_screen.dart';
-import 'package:the_planet/screens/main/main_screen.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 Future<void> main() async {
@@ -15,6 +15,7 @@ Future<void> main() async {
 }
 
 Future<void> _initCrashlytics() async {
+  // enable crashlytics even for debug mode
   FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
 }
@@ -26,16 +27,11 @@ class PlanetApp extends StatelessWidget {
       localizationsDelegates: [
          GlobalWidgetsLocalizations.delegate,
          GlobalCupertinoLocalizations.delegate,
-         GlobalMaterialLocalizations.delegate
+         GlobalMaterialLocalizations.delegate,
+         S.delegate
       ],
-      supportedLocales: [
-        const Locale("en", ""),
-        const Locale("ru", "")
-      ],
-      routes:
-      {'main' : (context) => MainScreen(),
-      'auth' : (context) => AuthScreen()},
-      title: 'Flutter Demo',
+      supportedLocales: AppLocalizationDelegate().supportedLocales,
+      routes: AppRoutes.routes,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -53,9 +49,6 @@ class AppStartRouteScreen extends StatelessWidget {
     return FutureBuilder(
         future: openScreen(),
         builder: (context, snapshot) {
-        FirebaseCrashlytics.instance.log("some log");  
-        FirebaseCrashlytics.instance.log("еще some log"); 
-        FirebaseCrashlytics.instance.crash();
         if (snapshot.hasData && snapshot.connectionState == ConnectionState.done) {
           return snapshot.data == 0 ? IntroScreen() : Container(color: Colors.green, width: 50, height: 50);
         }

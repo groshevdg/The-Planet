@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_planet/generated/l10n.dart';
 
 class AcceptAgreemetWidget extends StatefulWidget {
   @override
@@ -13,8 +14,7 @@ class _AcceptAgreemetWidgetState extends State<AcceptAgreemetWidget> {
       padding: const EdgeInsets.only(left: 24, right: 12),
       child: Row(
         children: [
-          Text("I read and agree with agreement"),
-          Spacer(),
+          Flexible(child: Text(S.of(context).agreement_message)),
           Checkbox(value: _isChecked, onChanged: (value) {
             setState(() {
               _isChecked = value;
