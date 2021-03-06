@@ -19,7 +19,7 @@ class _AcceptAgreementWidgetState extends State<AcceptAgreementWidget> {
       padding: const EdgeInsets.only(left: 24, right: 12),
       child: Row(
         children: [
-          Flexible(child: Text(S.of(context).agreement_message)),
+          Expanded(child: Text(S.of(context).agreement_message)),
           Checkbox(value: _isChecked, onChanged: (value) {
             setState(() {
               widget.authController.checkBoxIsClicked(value);

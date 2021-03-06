@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:the_planet/config/consts.dart';
 import 'package:the_planet/generated/l10n.dart';
 
 class TooltipProvider extends ChangeNotifier {
@@ -11,13 +12,13 @@ class TooltipProvider extends ChangeNotifier {
   }
 
   void _updateTooltipMessage(int index) {
-     if (index == 0) {
+     if (index == Consts.USERNAME_INDEX) {
       _tooltipMessage = S.current.username_tooltip;
     }
-    else if (index == 1) {
+    else if (index == Consts.PASSWORD_INDEX) {
        _tooltipMessage =  S.current.password_tooltip;
     }
-    else if (index == 2) {
+    else if (index == Consts.CONFIRM_PASS_INDEX) {
        _tooltipMessage =  S.current.confirm_pass_tooltip;
     }
     else {
