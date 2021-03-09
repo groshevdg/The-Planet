@@ -12,8 +12,16 @@ class NavItemsSection extends StatefulWidget {
   final Alignment alignment;
   final NavBarController navBarController;
 
-  const NavItemsSection({Key key, this.title1, this.title2, this.icon1,
-    this.icon2, this.alignment, this.id1, this.id2, this.navBarController}) : super(key: key);
+  const NavItemsSection({
+    Key? key,
+    required this.title1,
+    required this.title2,
+    required this.icon1,
+    required this.icon2,
+    required this.alignment,
+    required this.id1,
+    required this.id2,
+    required this.navBarController}) : super(key: key);
 
   @override
   _NavItemsSectionState createState() => _NavItemsSectionState();

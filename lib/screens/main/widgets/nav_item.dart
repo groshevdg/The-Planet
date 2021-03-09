@@ -7,7 +7,12 @@ class CustomNavItem extends StatefulWidget {
   final int itemId;
   final NavBarController controller;
 
-  const CustomNavItem({Key key, this.icon, this.title, this.itemId, this.controller}) : super(key: key);
+  const CustomNavItem({
+    Key? key,
+    required this.icon,
+    required this.title,
+    required this.itemId,
+    required this.controller}) : super(key: key);
 
   @override
   _CustomNavItemState createState() => _CustomNavItemState();

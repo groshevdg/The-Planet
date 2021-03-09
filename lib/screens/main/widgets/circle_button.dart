@@ -8,7 +8,11 @@ class CircleButton extends StatefulWidget {
   final int itemId;
   final NavBarController controller;
 
-  const CircleButton({Key key, @required this.itemId, @required this.controller}) : super(key: key);
+  const CircleButton({
+    Key? key,
+    required this.itemId,
+    required this.controller
+  }) : super(key: key);
 
   @override
   _CircleButtonState createState() => _CircleButtonState();

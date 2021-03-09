@@ -16,7 +16,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  NavBarController navBarController;
+  late NavBarController navBarController;
   @override
   void initState() {
     navBarController = NavBarController(1);

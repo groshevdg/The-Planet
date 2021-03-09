@@ -6,7 +6,11 @@ import 'package:the_planet/screens/main/widgets/circle_button.dart';
 class CustomBottomNavBar extends StatefulWidget {
   final NavBarController controller;
 
-  const CustomBottomNavBar({Key key, @required this.controller}) : super(key: key);
+  const CustomBottomNavBar({
+    Key? key,
+    required this.controller
+  }) : super(key: key);
+
   @override
   _CustomBottomNavBarState createState() => _CustomBottomNavBarState();
 }
@@ -51,7 +55,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
 }
 
 class NavBarController extends ChangeNotifier {
-  int _selectedItem;
+  late int _selectedItem;
   final int defaultSelectedItem;
   int get selected => _selectedItem;
 

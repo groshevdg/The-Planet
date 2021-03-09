@@ -6,17 +6,17 @@ class InputTextRow extends StatefulWidget {
   final AuthController authController;
   final int rowIndex;
 
-  InputTextRow({Key key, 
-  @required this.hint,
-  @required this.authController,
-  @required this.rowIndex}) : super(key: key);
+  InputTextRow({Key? key,
+  required this.hint,
+  required this.authController,
+  required this.rowIndex}) : super(key: key);
 
   @override
   _InputTextRowState createState() => _InputTextRowState();
 }
 
 class _InputTextRowState extends State<InputTextRow> {
-  TextEditingController _textEditingController;
+  late TextEditingController _textEditingController;
 
   @override
   void initState() {

@@ -1,9 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:the_planet/config/routes.dart';
 import 'package:the_planet/config/theme.dart';
-import 'package:the_planet/generated/l10n.dart';
+import 'package:the_planet/di/locator.dart';
 import 'package:the_planet/screens/intro/intro_screen.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
@@ -11,6 +10,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await _initCrashlytics();
+  setupAppSingletons();
   runApp(PlanetApp());
 }
 
@@ -24,13 +24,6 @@ class PlanetApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      localizationsDelegates: [
-         GlobalWidgetsLocalizations.delegate,
-         GlobalCupertinoLocalizations.delegate,
-         GlobalMaterialLocalizations.delegate,
-         S.delegate
-      ],
-      supportedLocales: AppLocalizationDelegate().supportedLocales,
       routes: AppRoutes.routes,
       theme: ThemeData(
         primarySwatch: Colors.blue,

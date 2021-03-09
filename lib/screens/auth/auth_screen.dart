@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:the_planet/config/consts.dart';
-import 'package:the_planet/generated/l10n.dart';
+import 'package:the_planet/config/strings.dart';
 import 'package:the_planet/screens/auth/auth_controller.dart';
 import 'package:the_planet/screens/auth/providers/button_enable_provider.dart';
 import 'package:the_planet/screens/auth/providers/privacy_state_provider.dart';
@@ -16,12 +16,12 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
-  AuthController _authController;
-  TooltipProvider _tooltipProvider;
-  PrivacyMessageStateProvider _privacyMessageStateProvider;
-  ButtonEnableProvider _buttonEnableProvider;
-  Animation<Offset> _offsetAnimation;
-  AnimationController _animationController;
+  late AuthController _authController;
+  late TooltipProvider _tooltipProvider;
+  late PrivacyMessageStateProvider _privacyMessageStateProvider;
+  late ButtonEnableProvider _buttonEnableProvider;
+  late Animation<Offset> _offsetAnimation;
+  late AnimationController _animationController;
 
   @override
   void initState() { 
@@ -49,12 +49,12 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
               padding: const EdgeInsets.only(top: 60),
               child: Align(
                 alignment: Alignment.topCenter,
-                child: Text(S.of(context).create_acc_message,
+                child: Text(Strings.create_acc_message,
                     style: Theme.of(context).textTheme.headline1
                 ),
               ),
             ),
-            Text(S.of(context).data_to_create_acc,
+            Text(Strings.data_to_create_acc,
               style: Theme.of(context).textTheme.headline2,
               textAlign: TextAlign.center
             ),
@@ -64,10 +64,10 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
                 alignment: Alignment.topLeft,
                 child: Column(
                   children: [
-                    InputTextRow(hint: S.of(context).username_hint, authController: _authController, rowIndex: Consts.USERNAME_INDEX),
-                    InputTextRow(hint: S.of(context).password_hint, authController: _authController, rowIndex: Consts.PASSWORD_INDEX),
-                    InputTextRow(hint: S.of(context).confirm_pass_hint, authController: _authController, rowIndex: Consts.CONFIRM_PASS_INDEX),
-                    InputTextRow(hint: S.of(context).secret_word, authController: _authController, rowIndex: Consts.SECRET_WORD_INDEX),
+                    InputTextRow(hint: Strings.username_hint, authController: _authController, rowIndex: Consts.USERNAME_INDEX),
+                    InputTextRow(hint: Strings.password_hint, authController: _authController, rowIndex: Consts.PASSWORD_INDEX),
+                    InputTextRow(hint: Strings.confirm_pass_hint, authController: _authController, rowIndex: Consts.CONFIRM_PASS_INDEX),
+                    InputTextRow(hint: Strings.secret_word, authController: _authController, rowIndex: Consts.SECRET_WORD_INDEX),
                   ],
                 ),
               ),
@@ -96,14 +96,14 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
                 create: (context) => _buttonEnableProvider,
                 child: Consumer<ButtonEnableProvider>(
                   builder: (context, state, child) {
-                    return RaisedButton(onPressed: state.isEnable ? () {} : null,
-                        child: Text(S.of(context).create_acc_button)
+                    return ElevatedButton(onPressed: state.isEnable ? () {} : null,
+                        child: Text(Strings.create_acc_button)
                     );
                   },
                 )),
             Padding(padding: EdgeInsets.only(bottom: 30, top: 10),
               child: TextButton(onPressed: () {},
-                child: Text(S.of(context).already_created),
+                child: Text(Strings.already_created),
               ),
             )
           ],

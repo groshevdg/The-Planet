@@ -7,23 +7,23 @@ import 'package:the_planet/screens/auth/providers/privacy_state_provider.dart';
 import 'package:the_planet/screens/auth/providers/tooltip_provider.dart';
 
 class AuthController {
-  AuthScreenStateManager _stateManager;
+  late AuthScreenStateManager _stateManager;
   final TooltipProvider tooltipProvider;
   final PrivacyMessageStateProvider privacyMessageStateProvider;
   final ButtonEnableProvider buttonEnableProvider;
   final BuildContext context;
 
-  String _usernameTextFiledValue;
-  String _passwordTextFiledValue;
-  String _confirmPassTextFiledValue;
-  String _secretWordTextFiledValue;
-  bool _checkboxValue = false;
+  String? _usernameTextFiledValue;
+  String? _passwordTextFiledValue;
+  String? _confirmPassTextFiledValue;
+  String? _secretWordTextFiledValue;
+  bool? _checkboxValue = false;
 
   AuthController({
-    @required this.context,
-    @required this.tooltipProvider,
-    @required this.privacyMessageStateProvider,
-    @required this.buttonEnableProvider
+    required this.context,
+    required this.tooltipProvider,
+    required this.privacyMessageStateProvider,
+    required this.buttonEnableProvider
   }) {
     _stateManager = AuthScreenStateManager(
       tooltipProvider: tooltipProvider,
@@ -39,7 +39,7 @@ class AuthController {
 
   void finishTextEditing(int index, String value) {
     _setupTextEditingValues(index, value);
-    _stateManager.updateUiState(isInputCorrect: _isInputCorrect(), shouldEnableButton: _isInputCorrect() && _checkboxValue);
+    _stateManager.updateUiState(isInputCorrect: _isInputCorrect(), shouldEnableButton: _isInputCorrect() && _checkboxValue!);
   }
 
   void checkBoxIsClicked(value) {
@@ -70,7 +70,7 @@ class AuthController {
     }
   }
 
-  bool _isInputCorrect() => _usernameTextFiledValue != null && _usernameTextFiledValue.length > 4
-      && _passwordTextFiledValue != null && _passwordTextFiledValue.length > 5 && _confirmPassTextFiledValue == _passwordTextFiledValue
-      && _secretWordTextFiledValue != null && _secretWordTextFiledValue.isNotEmpty;
+  bool _isInputCorrect() => _usernameTextFiledValue!.length > 4
+      && _passwordTextFiledValue!.length > 5 && _confirmPassTextFiledValue == _passwordTextFiledValue
+      && _secretWordTextFiledValue!.isNotEmpty;
 }
