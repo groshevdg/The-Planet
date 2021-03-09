@@ -35,18 +35,19 @@ dependencies:
   firebase_crashlytics: ^1.0.0
   provider: ^5.0.0
   get_it: ^6.0.0
+  injectable: ^1.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   build_runner: any
+  injectable_generator:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-  generate: true
   uses-material-design: true
 
   assets:
@@ -77,5 +78,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-flutter_intl:
-  enabled: true

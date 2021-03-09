@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:the_planet/config/consts.dart';
 import 'package:the_planet/config/strings.dart';
+import 'package:the_planet/di/injector.dart';
 import 'package:the_planet/screens/auth/auth_controller.dart';
 import 'package:the_planet/screens/auth/providers/button_enable_provider.dart';
 import 'package:the_planet/screens/auth/providers/privacy_state_provider.dart';
@@ -16,10 +17,6 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
-  late AuthController _authController;
-  late TooltipProvider _tooltipProvider;
-  late PrivacyMessageStateProvider _privacyMessageStateProvider;
-  late ButtonEnableProvider _buttonEnableProvider;
   late Animation<Offset> _offsetAnimation;
   late AnimationController _animationController;
 
@@ -27,14 +24,6 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
   void initState() { 
     _animationController = AnimationController(vsync: this, duration: Duration(seconds: 2));
     _offsetAnimation = Tween<Offset>(begin: Offset(1000, 0), end: Offset(0, 0)).animate(CurvedAnimation(parent: _animationController, curve: Curves.fastLinearToSlowEaseIn));
-    _tooltipProvider = TooltipProvider();
-    _privacyMessageStateProvider = PrivacyMessageStateProvider();
-    _buttonEnableProvider = ButtonEnableProvider();
-    _authController = AuthController(
-        context: context,
-        tooltipProvider: _tooltipProvider,
-        privacyMessageStateProvider: _privacyMessageStateProvider,
-        buttonEnableProvider: _buttonEnableProvider);
     super.initState();
   }
 
@@ -64,26 +53,26 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
                 alignment: Alignment.topLeft,
                 child: Column(
                   children: [
-                    InputTextRow(hint: Strings.username_hint, authController: _authController, rowIndex: Consts.USERNAME_INDEX),
-                    InputTextRow(hint: Strings.password_hint, authController: _authController, rowIndex: Consts.PASSWORD_INDEX),
-                    InputTextRow(hint: Strings.confirm_pass_hint, authController: _authController, rowIndex: Consts.CONFIRM_PASS_INDEX),
-                    InputTextRow(hint: Strings.secret_word, authController: _authController, rowIndex: Consts.SECRET_WORD_INDEX),
+                    InputTextRow(hint: Strings.username_hint, authController: getIt<AuthController>(), rowIndex: Consts.USERNAME_INDEX),
+                    InputTextRow(hint: Strings.password_hint, authController: getIt<AuthController>(), rowIndex: Consts.PASSWORD_INDEX),
+                    InputTextRow(hint: Strings.confirm_pass_hint, authController: getIt<AuthController>(), rowIndex: Consts.CONFIRM_PASS_INDEX),
+                    InputTextRow(hint: Strings.secret_word, authController: getIt<AuthController>(), rowIndex: Consts.SECRET_WORD_INDEX),
                   ],
                 ),
               ),
             ),
             ChangeNotifierProvider(
-                create: (context) => _privacyMessageStateProvider,
+                create: (context) => getIt<PrivacyMessageStateProvider>(),
                 child: Consumer<PrivacyMessageStateProvider>(builder: (context, state, child)  {
                   if (state.shouldShow) {
                     _animationController.forward();
                   }
-                  return  SlideTransition(position: _offsetAnimation, child: AcceptAgreementWidget(authController: _authController));
+                  return SlideTransition(position: _offsetAnimation, child: AcceptAgreementWidget());
                 })
             ),
             Spacer(),
             ChangeNotifierProvider(
-              create: (context) => _tooltipProvider,
+              create: (context) => getIt<TooltipProvider>(),
               child: Consumer<TooltipProvider>(builder: (context, providerState, child) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -93,7 +82,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
             ),
             Spacer(),
             ChangeNotifierProvider(
-                create: (context) => _buttonEnableProvider,
+                create: (context) => getIt<ButtonEnableProvider>(),
                 child: Consumer<ButtonEnableProvider>(
                   builder: (context, state, child) {
                     return ElevatedButton(onPressed: state.isEnable ? () {} : null,

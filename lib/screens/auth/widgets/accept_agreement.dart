@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:the_planet/config/strings.dart';
+import 'package:the_planet/di/injector.dart';
 import 'package:the_planet/screens/auth/auth_controller.dart';
 
 class AcceptAgreementWidget extends StatefulWidget {
-  final AuthController authController;
-
-  const AcceptAgreementWidget({
-    Key? key,
-    required this.authController
-  }) : super(key: key);
 
   @override
   _AcceptAgreementWidgetState createState() => _AcceptAgreementWidgetState();
@@ -25,7 +20,7 @@ class _AcceptAgreementWidgetState extends State<AcceptAgreementWidget> {
           Expanded(child: Text(Strings.agreement_message)),
           Checkbox(value: _isChecked, onChanged: (value) {
             setState(() {
-              widget.authController.checkBoxIsClicked(value);
+              getIt<AuthController>().checkBoxIsClicked(value);
               _isChecked = value!;
             });
           })

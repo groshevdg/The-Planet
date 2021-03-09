@@ -1,17 +1,13 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 import 'package:the_planet/config/consts.dart';
 import 'package:the_planet/screens/auth/auth_state_manager.dart';
-import 'package:the_planet/screens/auth/providers/button_enable_provider.dart';
-import 'package:the_planet/screens/auth/providers/privacy_state_provider.dart';
-import 'package:the_planet/screens/auth/providers/tooltip_provider.dart';
 
+@lazySingleton
 class AuthController {
-  late AuthScreenStateManager _stateManager;
-  final TooltipProvider tooltipProvider;
-  final PrivacyMessageStateProvider privacyMessageStateProvider;
-  final ButtonEnableProvider buttonEnableProvider;
-  final BuildContext context;
+  final AuthScreenStateManager _stateManager;
+
+  AuthController(this._stateManager);
 
   String? _usernameTextFiledValue;
   String? _passwordTextFiledValue;
@@ -19,20 +15,7 @@ class AuthController {
   String? _secretWordTextFiledValue;
   bool? _checkboxValue = false;
 
-  AuthController({
-    required this.context,
-    required this.tooltipProvider,
-    required this.privacyMessageStateProvider,
-    required this.buttonEnableProvider
-  }) {
-    _stateManager = AuthScreenStateManager(
-      tooltipProvider: tooltipProvider,
-      privacyMessageStateProvider: privacyMessageStateProvider,
-      buttonEnableProvider: buttonEnableProvider
-    );
-  }
-
-  void questionIconIsPressed(int index) {
+  void questionIconIsPressed(int index, BuildContext context) {
     FocusScope.of(context).unfocus();
     _stateManager.updateUiState(tooltipNumber: index);
   }

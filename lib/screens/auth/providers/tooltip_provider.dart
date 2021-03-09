@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:injectable/injectable.dart';
 import 'package:the_planet/config/consts.dart';
 import 'package:the_planet/config/strings.dart';
 
+@lazySingleton
 class TooltipProvider extends ChangeNotifier {
   String _tooltipMessage = "";
   String get message => _tooltipMessage;

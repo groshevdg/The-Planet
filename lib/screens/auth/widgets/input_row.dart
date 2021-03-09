@@ -43,7 +43,7 @@ class _InputTextRowState extends State<InputTextRow> {
           ),
           GestureDetector(
             onTap: () {
-              widget.authController.questionIconIsPressed(widget.rowIndex);
+              widget.authController.questionIconIsPressed(widget.rowIndex, context);
             },
             child: Image.asset('assets/images/ic_question.png', width: 30, color: Colors.black)
           )

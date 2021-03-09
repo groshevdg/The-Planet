@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:injectable/injectable.dart';
 
+@lazySingleton
 class PrivacyMessageStateProvider extends ChangeNotifier {
   bool _shouldShow = false;
   bool get shouldShow => _shouldShow;
