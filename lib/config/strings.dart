@@ -1,9 +1,9 @@
 class Strings {
   static const ok =  "OK";
-  static const app_name = "The Pony Planet";
+  static const app_name = "App name";
   static const start_button_title = "Let's start";
-  static const create_acc_message = "Let's create your account";
-  static const data_to_create_acc = "Choose your username; password and keyword.\nTap on a question icon to learn more.";
+  static const create_acc_message = "Let's create new account";
+  static const data_to_create_acc = "Tap on a question icon to learn more.";
   static const username_hint = "Username";
   static const password_hint = "Password";
   static const confirm_pass_hint = "Confirm Password";
@@ -12,7 +12,7 @@ class Strings {
   static const create_acc_button = "Create account";
   static const already_created = "I have account";
   static const username_tooltip = "Username will be visible for all users";
-  static const password_tooltip = "Create strong password; to protect your account";
+  static const password_tooltip = "Create strong password to protect your account";
   static const confirm_pass_tooltip = "Confirm the pass you type before";
-  static const secret_word_tooltip = "Create secret word. It will be used to recreate a password; if you forget it";
+  static const secret_word_tooltip = "Create secret word. It will be used to recreate a password, if you forget it";
 }

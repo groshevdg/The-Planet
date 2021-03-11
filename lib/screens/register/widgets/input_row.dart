@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:the_planet/screens/auth/auth_controller.dart';
+import 'package:the_planet/screens/register/register_controller.dart';
+import 'package:the_planet/utils/ui_utils.dart';
+import 'package:the_planet/misc/extensions.dart';
 
 class InputTextRow extends StatefulWidget {
   final String hint;
-  final AuthController authController;
+  final RegisterController authController;
   final int rowIndex;
 
   InputTextRow({Key? key,
@@ -27,17 +29,19 @@ class _InputTextRowState extends State<InputTextRow> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(UiUtils.defaultMargin / 3),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(
-              height: 40, width: MediaQuery.of(context).size.width * 0.75,
+              height: UiUtils.scaleSize(40), width: MediaQuery.of(context).size.width * 0.78,
               child: TextField(
+                style: Theme.of(context).textTheme.headline2!.scaled,
                 controller: _textEditingController,
                 onChanged: (value) => widget.authController.finishTextEditing(widget.rowIndex, value),
                 decoration: InputDecoration(
-                    hintText: widget.hint
+                    hintText: widget.hint,
+                    hintStyle: Theme.of(context).textTheme.headline2!.scaled
                 ),
               )
           ),
@@ -45,7 +49,7 @@ class _InputTextRowState extends State<InputTextRow> {
             onTap: () {
               widget.authController.questionIconIsPressed(widget.rowIndex, context);
             },
-            child: Image.asset('assets/images/ic_question.png', width: 30, color: Colors.black)
+            child: Image.asset('assets/images/ic_question.png', width: UiUtils.scaleSize(30), color: Colors.black)
           )
         ],
       ),

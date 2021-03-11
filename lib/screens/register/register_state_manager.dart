@@ -1,16 +1,16 @@
 import 'package:injectable/injectable.dart';
-import 'package:the_planet/screens/auth/providers/button_enable_provider.dart';
-import 'package:the_planet/screens/auth/providers/privacy_state_provider.dart';
+import 'package:the_planet/screens/register/providers/button_enable_provider.dart';
+import 'package:the_planet/screens/register/providers/privacy_state_provider.dart';
 
 import 'providers/tooltip_provider.dart';
 
 @lazySingleton
-class AuthScreenStateManager {
+class RegisterScreenStateManager {
   final TooltipProvider tooltipProvider;
   final PrivacyMessageStateProvider privacyMessageStateProvider;
   final ButtonEnableProvider buttonEnableProvider;
 
-  AuthScreenStateManager(
+  RegisterScreenStateManager(
     this.tooltipProvider,
     this.privacyMessageStateProvider,
     this.buttonEnableProvider

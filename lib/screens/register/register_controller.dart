@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:the_planet/config/consts.dart';
-import 'package:the_planet/screens/auth/auth_state_manager.dart';
+import 'package:the_planet/screens/register/register_state_manager.dart';
 
 @lazySingleton
-class AuthController {
-  final AuthScreenStateManager _stateManager;
+class RegisterController {
+  final RegisterScreenStateManager _stateManager;
 
-  AuthController(this._stateManager);
+  RegisterController(this._stateManager);
 
   String? _usernameTextFiledValue;
   String? _passwordTextFiledValue;

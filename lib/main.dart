@@ -5,6 +5,7 @@ import 'package:the_planet/config/theme.dart';
 import 'package:the_planet/di/injector.dart';
 import 'package:the_planet/screens/intro/intro_screen.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:the_planet/utils/ui_utils.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,6 +22,7 @@ Future<void> _initCrashlytics() async {
 }
 
 class PlanetApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,15 +41,16 @@ class AppStartRouteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UiUtils.init(context);
     return FutureBuilder(
         future: openScreen(),
         builder: (context, snapshot) {
-        if (snapshot.hasData && snapshot.connectionState == ConnectionState.done) {
-          return snapshot.data == 0 ? IntroScreen() : Container(color: Colors.green, width: 50, height: 50);
-        }
-        else {
-          return CircularProgressIndicator();
-        }
+          if (snapshot.hasData && snapshot.connectionState == ConnectionState.done) {
+            return snapshot.data == 0 ? IntroScreen() : Container(color: Colors.green, width: 50, height: 50);
+          }
+          else {
+            return CircularProgressIndicator();
+          }
     });
   }
 

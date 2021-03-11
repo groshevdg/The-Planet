@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:the_planet/config/strings.dart';
 import 'package:the_planet/di/injector.dart';
-import 'package:the_planet/screens/auth/auth_controller.dart';
+import 'package:the_planet/screens/register/register_controller.dart';
+import 'package:the_planet/misc/extensions.dart';
+import 'package:the_planet/utils/ui_utils.dart';
+
 
 class AcceptAgreementWidget extends StatefulWidget {
 
@@ -14,13 +17,15 @@ class _AcceptAgreementWidgetState extends State<AcceptAgreementWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 24, right: 12),
+      padding: EdgeInsets.only(left: UiUtils.defaultMargin, right: UiUtils.defaultMargin / 2),
       child: Row(
         children: [
-          Expanded(child: Text(Strings.agreement_message)),
+          Expanded(child: Text(Strings.agreement_message,
+              style: Theme.of(context).textTheme.headline2!.scaled)
+          ),
           Checkbox(value: _isChecked, onChanged: (value) {
             setState(() {
-              getIt<AuthController>().checkBoxIsClicked(value);
+              getIt<RegisterController>().checkBoxIsClicked(value);
               _isChecked = value!;
             });
           })
