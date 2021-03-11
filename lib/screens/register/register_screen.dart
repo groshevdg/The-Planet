@@ -95,14 +95,14 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
                 create: (context) => getIt<ButtonEnableProvider>(),
                 child: Consumer<ButtonEnableProvider>(
                   builder: (context, state, child) {
-                    return ElevatedButton(onPressed: state.isEnable ? () {} : null,
+                    return ElevatedButton(onPressed: state.isEnable ? () => getIt<RegisterController>().createButtonIsPressed(context) : null,
                         child: Text(Strings.create_acc_button, style: Theme.of(context).textTheme.headline2!.scaled)
                     );
                   },
                 )
             ),
             Padding(padding: EdgeInsets.only(bottom: UiUtils.scaleSize(30), top: UiUtils.scaleSize(10)),
-              child: TextButton(onPressed: () {},
+              child: TextButton(onPressed: () => getIt<RegisterController>().accountAlreadyCreatedIsPressed(),
                 child: Text(Strings.already_created, style: Theme.of(context).textTheme.headline2!.copyWith(color: Colors.blue).scaled),
               ),
             )

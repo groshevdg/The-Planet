@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:the_planet/config/consts.dart';
+import 'package:the_planet/screens/main/main_screen.dart';
 import 'package:the_planet/screens/register/register_state_manager.dart';
+import 'package:the_planet/usecase/intro_usecase.dart';
 
 @lazySingleton
 class RegisterController {
   final RegisterScreenStateManager _stateManager;
+  final IntroUseCase _introUseCase;
 
-  RegisterController(this._stateManager);
+  RegisterController(this._stateManager, this._introUseCase);
 
   String? _usernameTextFiledValue;
   String? _passwordTextFiledValue;
@@ -30,12 +33,18 @@ class RegisterController {
     _stateManager.updateUiState(shouldEnableButton: value && _isInputCorrect());
   }
 
-  void createButtonIsPressed() {
-    // todo register user
+  void createButtonIsPressed(BuildContext context) async {
+    var isSuccess = await _introUseCase.registerUser(username: _usernameTextFiledValue!!, password: _passwordTextFiledValue!!, secretWord: _secretWordTextFiledValue!!);
+    if (isSuccess) {
+      Navigator.of(context).pushReplacementNamed(MainScreen.route);
+    }
+    else {
+      /// todo show error message
+    }
   }
 
   void accountAlreadyCreatedIsPressed() {
-    // todo navigate
+    // todo navigate to auth screen
   }
 
   void _setupTextEditingValues(int index, String value) {
