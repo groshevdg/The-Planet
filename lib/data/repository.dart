@@ -14,9 +14,16 @@ class Repository {
 
     await _checkNetworkAvailableOrThrow();
     await _validateUsernameOrThrow(username);
-    return FirebaseFirestore.instance.collection(Consts.USERS_PATH)
+    var userData = await FirebaseFirestore.instance.collection(Consts.USERS_PATH)
         .add(_getUserJsonData(username, password, secretWord));
+    _initNewUserScore(userData.id);
+    return userData;
   }
+
+  Future<void> _initNewUserScore(String token) async {
+    FirebaseFirestore.instance.collection(Consts.SCORE_PATH)
+        .add({Consts.TOKEN_KEY: token, Consts.SCORE_VALUE: 0});
+}
 
   Future _validateUsernameOrThrow(String username) async {
     var query = await FirebaseFirestore.instance.collection(Consts.USERS_PATH).where(Consts.USERNAME_KEY, isEqualTo: username).get();

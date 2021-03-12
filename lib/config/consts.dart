@@ -8,7 +8,7 @@ class Consts {
   static const USERNAME_KEY = "username";
   static const PASSWORD_KEY = "password";
   static const SECRET_WORD_KEY = "word";
-
   static const TOKEN_KEY = "authToken";
-
+  static const SCORE_PATH = "score";
+  static const SCORE_VALUE = "scoreValue";
 }
