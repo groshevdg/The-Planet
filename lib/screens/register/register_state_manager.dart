@@ -19,7 +19,9 @@ class RegisterScreenStateManager {
   void updateUiState({
     int? tooltipNumber, // change tooltip message by a question icon click
     bool? isInputCorrect, // check all text fields typed correct to show agreement message,
-    bool? shouldEnableButton // enable or disable button
+    bool? shouldEnableButton, // enable or disable button
+    Exception? exception, // change tooltip define of kinda exception
+    bool? clearFlag // clears tooltip
   }) {
     if (tooltipNumber != null) {
       tooltipProvider.updateTooltipMessage(tooltipNumber);
@@ -31,6 +33,14 @@ class RegisterScreenStateManager {
 
     if (shouldEnableButton != null) {
       buttonEnableProvider.updateButtonState(shouldEnableButton);
+    }
+
+    if (exception != null) {
+      tooltipProvider.updateErrorMessage(exception);
+    }
+
+    if (clearFlag != null) {
+      tooltipProvider.clearMessage();
     }
   }
 }

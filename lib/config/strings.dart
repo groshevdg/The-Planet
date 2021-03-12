@@ -15,4 +15,8 @@ class Strings {
   static const password_tooltip = "Create strong password to protect your account";
   static const confirm_pass_tooltip = "Confirm the pass you type before";
   static const secret_word_tooltip = "Create secret word. It will be used to recreate a password, if you forget it";
+  static const network_isnt_available = "Network is not available. Check your network connection and try again";
+  static const username_exist = "Such username is already exist";
+  static const unknown_error = "Unknown error. Try again";
+  static const password_isnt_equal = "Passwords is not equal";
 }

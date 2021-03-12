@@ -102,7 +102,7 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
                 )
             ),
             Padding(padding: EdgeInsets.only(bottom: UiUtils.scaleSize(30), top: UiUtils.scaleSize(10)),
-              child: TextButton(onPressed: () => getIt<RegisterController>().accountAlreadyCreatedIsPressed(),
+              child: TextButton(onPressed: () => getIt<RegisterController>().accountAlreadyCreatedIsPressed(context),
                 child: Text(Strings.already_created, style: Theme.of(context).textTheme.headline2!.copyWith(color: Colors.blue).scaled),
               ),
             )
