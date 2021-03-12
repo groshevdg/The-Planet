@@ -19,4 +19,7 @@ class Strings {
   static const username_exist = "Such username is already exist";
   static const unknown_error = "Unknown error. Try again";
   static const password_isnt_equal = "Passwords is not equal";
+  static const login_message = "Login";
+  static const user_isnt_exist = "Incorrect username or password";
+  static const remember_pass_btn = "Don't remember password";
 }

@@ -1,4 +1,4 @@
-class UserExistException implements Exception {
+class UsernameExistException implements Exception {
   @override
   String toString() => "Username already exists in database";
 }
@@ -16,4 +16,9 @@ class UnknownError implements Exception {
 class PasswordsNotEqualsException implements Exception {
   @override
   String toString() => "Passwords is not the same";
+}
+
+class UserNotExistException implements Exception {
+  @override
+  String toString() => "User is not exist in database";
 }

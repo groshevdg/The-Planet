@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:the_planet/di/injector.dart';
 import 'package:the_planet/screens/register/register_controller.dart';
 import 'package:the_planet/utils/ui_utils.dart';
 import 'package:the_planet/misc/extensions.dart';
 
 class InputTextRow extends StatefulWidget {
   final String hint;
-  final RegisterController authController;
   final int rowIndex;
 
   InputTextRow({Key? key,
   required this.hint,
-  required this.authController,
   required this.rowIndex}) : super(key: key);
 
   @override
@@ -38,7 +37,7 @@ class _InputTextRowState extends State<InputTextRow> {
               child: TextField(
                 style: Theme.of(context).textTheme.headline2!.scaled,
                 controller: _textEditingController,
-                onChanged: (value) => widget.authController.finishTextEditing(widget.rowIndex, value),
+                onChanged: (value) => getIt<RegisterController>().finishTextEditing(widget.rowIndex, value),
                 decoration: InputDecoration(
                     hintText: widget.hint,
                     hintStyle: Theme.of(context).textTheme.headline2!.scaled
@@ -47,7 +46,7 @@ class _InputTextRowState extends State<InputTextRow> {
           ),
           GestureDetector(
             onTap: () {
-              widget.authController.questionIconIsPressed(widget.rowIndex, context);
+              getIt<RegisterController>().questionIconIsPressed(widget.rowIndex, context);
             },
             child: Image.asset('assets/images/ic_question.png', width: UiUtils.scaleSize(30), color: Colors.black)
           )

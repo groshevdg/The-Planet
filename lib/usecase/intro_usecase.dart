@@ -20,12 +20,14 @@ class IntroUseCase {
     /// returns is register complete successful
     try {
       _validatePasswordOrThrow(password, confirmedPassword);
-      var response = await _repository.registerUser(username: username, password: password, secretWord: secretWord);
+      var response = await _repository.registerUser(
+          username: username, password: password, secretWord: secretWord);
       if (response != null) {
         await PrefsUtils.insertAuthToken(response.id);
         return Result(isSuccessful: true);
       }
-      else return Result(isSuccessful: false, exception: UnknownError());
+      else
+        return Result(isSuccessful: false, exception: UnknownError());
     } on Exception catch (e) {
       return Result(isSuccessful: false, exception: e);
     }
@@ -33,5 +35,15 @@ class IntroUseCase {
 
   void _validatePasswordOrThrow(password, confirmedPassword) {
     if (password != confirmedPassword) throw PasswordsNotEqualsException();
+  }
+
+  Future<Result> loginUser(String username, String password) async {
+    try {
+      Result<String> result = await _repository.loginUser(username, password);
+      PrefsUtils.insertAuthToken(result.data!);
+      return result;
+    } on Exception catch (e) {
+      return Result(isSuccessful: false, exception: e);
+    }
   }
 }

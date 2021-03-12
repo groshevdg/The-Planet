@@ -60,10 +60,10 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
                 alignment: Alignment.topLeft,
                 child: Column(
                   children: [
-                    InputTextRow(hint: Strings.username_hint, authController: getIt<RegisterController>(), rowIndex: Consts.USERNAME_INDEX),
-                    InputTextRow(hint: Strings.password_hint, authController: getIt<RegisterController>(), rowIndex: Consts.PASSWORD_INDEX),
-                    InputTextRow(hint: Strings.confirm_pass_hint, authController: getIt<RegisterController>(), rowIndex: Consts.CONFIRM_PASS_INDEX),
-                    InputTextRow(hint: Strings.secret_word, authController: getIt<RegisterController>(), rowIndex: Consts.SECRET_WORD_INDEX),
+                    InputTextRow(hint: Strings.username_hint, rowIndex: Consts.USERNAME_INDEX),
+                    InputTextRow(hint: Strings.password_hint, rowIndex: Consts.PASSWORD_INDEX),
+                    InputTextRow(hint: Strings.confirm_pass_hint, rowIndex: Consts.CONFIRM_PASS_INDEX),
+                    InputTextRow(hint: Strings.secret_word, rowIndex: Consts.SECRET_WORD_INDEX),
                   ],
                 ),
               ),

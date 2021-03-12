@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:the_planet/config/consts.dart';
-import 'package:the_planet/misc/exceptions.dart';
 import 'package:the_planet/screens/auth/auth_screen.dart';
 import 'package:the_planet/screens/main/main_screen.dart';
 import 'package:the_planet/screens/register/register_state_manager.dart';
@@ -37,9 +36,9 @@ class RegisterController {
 
   void createButtonIsPressed(BuildContext context) async {
     _stateManager.updateUiState(clearFlag: true);
-    var result = await _introUseCase.registerUser(username: _usernameTextFiledValue!!,
-        password: _passwordTextFiledValue!!, secretWord: _secretWordTextFiledValue!!,
-        confirmedPassword: _confirmPassTextFiledValue!!);
+    var result = await _introUseCase.registerUser(username: _usernameTextFiledValue!,
+        password: _passwordTextFiledValue!, secretWord: _secretWordTextFiledValue!,
+        confirmedPassword: _confirmPassTextFiledValue!);
 
     if (result.isSuccessful) {
       Navigator.of(context).pushReplacementNamed(MainScreen.route);

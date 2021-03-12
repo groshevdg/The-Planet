@@ -43,7 +43,7 @@ class TooltipProvider extends ChangeNotifier {
     if (exception is NetworkIsNotAvailableException) {
       _tooltipMessage = Strings.network_isnt_available;
     }
-    else if (exception is UserExistException) {
+    else if (exception is UsernameExistException) {
       _tooltipMessage = Strings.username_exist;
     }
     else if (exception is PasswordsNotEqualsException) {

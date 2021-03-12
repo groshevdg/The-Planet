@@ -3,6 +3,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:injectable/injectable.dart';
 import 'package:the_planet/config/consts.dart';
 import 'package:the_planet/misc/exceptions.dart';
+import 'package:the_planet/misc/result.dart';
 
 @lazySingleton
 class Repository {
@@ -20,7 +21,7 @@ class Repository {
   Future _validateUsernameOrThrow(String username) async {
     var query = await FirebaseFirestore.instance.collection(Consts.USERS_PATH).where(Consts.USERNAME_KEY, isEqualTo: username).get();
     if (query.size != 0) {
-      throw UserExistException();
+      throw UsernameExistException();
     }
   }
 
@@ -32,6 +33,21 @@ class Repository {
     var results = await Connectivity().checkConnectivity();
     if (results == ConnectivityResult.none) {
       throw NetworkIsNotAvailableException();
+    }
+  }
+
+  Future<Result<String>> loginUser(String username, String password) async {
+    await _checkNetworkAvailableOrThrow();
+    var snapshot = await FirebaseFirestore.instance.collection(Consts.USERS_PATH)
+      .where(Consts.USERNAME_KEY, isEqualTo: username)
+      .where(Consts.PASSWORD_KEY, isEqualTo: password)
+    .get();
+
+    if (snapshot.docs.isNotEmpty) {
+      return Result(isSuccessful: true, data: snapshot.docs[0].id);
+    }
+    else {
+      throw UserNotExistException();
     }
   }
 }
